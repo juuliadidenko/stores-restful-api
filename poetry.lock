@@ -60,16 +60,20 @@ async = ["asgiref (>=3.2)"]
 dotenv = ["python-dotenv"]
 
 [[package]]
-name = "flask-jwt"
-version = "0.3.2"
-description = "JWT token authentication for Flask apps"
+name = "flask-jwt-extended"
+version = "4.4.4"
+description = "Extended JWT integration with Flask"
 category = "main"
 optional = false
-python-versions = "*"
+python-versions = ">=3.7,<4"
 
 [package.dependencies]
-Flask = ">=0.9"
-PyJWT = ">=1.4.0,<1.5.0"
+Flask = ">=2.0,<3.0"
+PyJWT = ">=2.0,<3.0"
+Werkzeug = ">=0.14"
+
+[package.extras]
+asymmetric-crypto = ["cryptography (>=3.3.1)"]
 
 [[package]]
 name = "flask-restful"
@@ -144,16 +148,17 @@ python-versions = ">=3.6"
 
 [[package]]
 name = "pyjwt"
-version = "1.4.2"
+version = "2.6.0"
 description = "JSON Web Token implementation in Python"
 category = "main"
 optional = false
-python-versions = "*"
+python-versions = ">=3.7"
 
 [package.extras]
-crypto = ["cryptography"]
-flake8 = ["flake8", "flake8-import-order", "pep8-naming"]
-test = ["pytest (==2.7.3)", "pytest-cov", "pytest-runner"]
+crypto = ["cryptography (>=3.4.0)"]
+dev = ["coverage[toml] (==5.0.4)", "cryptography (>=3.4.0)", "pre-commit", "pytest (>=6.0.0,<7.0.0)", "sphinx (>=4.5.0,<5.0.0)", "sphinx-rtd-theme", "zope.interface"]
+docs = ["sphinx (>=4.5.0,<5.0.0)", "sphinx-rtd-theme", "zope.interface"]
+tests = ["coverage[toml] (==5.0.4)", "pytest (>=6.0.0,<7.0.0)"]
 
 [[package]]
 name = "python-dotenv"
@@ -199,7 +204,7 @@ watchdog = ["watchdog"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "131a12ee076c25a38823ba2984f483dacd5dc2a73f2d2b489f5f951ab763f26d"
+content-hash = "32f9c046d3ee2ee07545ab8466557bd9f04c261d384f910713d0244f0e092230"
 
 [metadata.files]
 aniso8601 = [
@@ -222,8 +227,9 @@ flask = [
     {file = "Flask-2.2.2-py3-none-any.whl", hash = "sha256:b9c46cc36662a7949f34b52d8ec7bb59c0d74ba08ba6cb9ce9adc1d8676d9526"},
     {file = "Flask-2.2.2.tar.gz", hash = "sha256:642c450d19c4ad482f96729bd2a8f6d32554aa1e231f4f6b4e7e5264b16cca2b"},
 ]
-flask-jwt = [
-    {file = "Flask-JWT-0.3.2.tar.gz", hash = "sha256:49c0672fbde0f1cd3374bd834918d28956e3c521c7e00089cdc5380d323bd0ad"},
+flask-jwt-extended = [
+    {file = "Flask-JWT-Extended-4.4.4.tar.gz", hash = "sha256:62b521d75494c290a646ae8acc77123721e4364790f1e64af0038d823961fbf0"},
+    {file = "Flask_JWT_Extended-4.4.4-py2.py3-none-any.whl", hash = "sha256:a85eebfa17c339a7260c4643475af444784ba6de5588adda67406f0a75599553"},
 ]
 flask-restful = [
     {file = "Flask-RESTful-0.3.9.tar.gz", hash = "sha256:ccec650b835d48192138c85329ae03735e6ced58e9b2d9c2146d6c84c06fa53e"},
@@ -292,8 +298,8 @@ pyflakes = [
     {file = "pyflakes-3.0.1.tar.gz", hash = "sha256:ec8b276a6b60bd80defed25add7e439881c19e64850afd9b346283d4165fd0fd"},
 ]
 pyjwt = [
-    {file = "PyJWT-1.4.2-py2.py3-none-any.whl", hash = "sha256:99fe612dbe5f41e07124d9002c118c14f3ee703574ffa9779fee78135b8b94b6"},
-    {file = "PyJWT-1.4.2.tar.gz", hash = "sha256:87a831b7a3bfa8351511961469ed0462a769724d4da48a501cb8c96d1e17f570"},
+    {file = "PyJWT-2.6.0-py3-none-any.whl", hash = "sha256:d83c3d892a77bbb74d3e1a2cfa90afaadb60945205d1095d9221f04466f64c14"},
+    {file = "PyJWT-2.6.0.tar.gz", hash = "sha256:69285c7e31fc44f68a1feb309e948e0df53259d579295e6cfe2b1792329f05fd"},
 ]
 python-dotenv = [
     {file = "python-dotenv-0.21.0.tar.gz", hash = "sha256:b77d08274639e3d34145dfa6c7008e66df0f04b7be7a75fd0d5292c191d79045"},

@@ -10,8 +10,8 @@ packages = [{include = "stores_restful_api"}]
 python = "^3.10"
 flask = "^2.2.2"
 flask-restful = "^0.3.9"
-flask-jwt = "^0.3.2"
 python-dotenv = "^0.21.0"
+flask-jwt-extended = "^4.4.4"
 
 
 [tool.poetry.group.dev.dependencies]
