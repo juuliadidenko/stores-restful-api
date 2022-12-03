@@ -1,2 +1,2 @@
 start:
-		poetry run flask --app app --debug run
+		poetry run flask --app stores_restful_api/app --debug run
