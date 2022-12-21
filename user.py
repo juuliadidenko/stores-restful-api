@@ -95,11 +95,9 @@ class UserLogin(Resource):
         user = User.find_by_username(data['username'])
 
         if user and user.password == data['password']:
-            access_token = create_access_token(identity=user.id, fresh=True)
-            refresh_token = create_refresh_token(user.id)
+            access_token = create_access_token(identity=user.id)
             return {
-                'access_token': access_token,
-                'refresh_token': refresh_token
+                'access_token': access_token
             }, 200
 
         return {"message": "Invalid Credentials!"}, 401
