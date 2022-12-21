@@ -2,9 +2,10 @@ import os
 from dotenv import load_dotenv
 from flask import Flask
 from flask_restful import Api
+from flask_sqlalchemy import SQLAlchemy
 from flask_jwt_extended import JWTManager
-from user import UserRegister, UserLogin
-from item import Item, ItemList
+from recources.user import UserRegister, UserLogin
+from recources.item import Item, ItemList
 
 
 load_dotenv()
@@ -13,6 +14,7 @@ load_dotenv()
 app = Flask(__name__)
 api = Api(app)
 app.secret_key = os.getenv('SECRET_KEY')
+db = SQLAlchemy()
 jwt = JWTManager(app)
 
 
