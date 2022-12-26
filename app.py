@@ -5,6 +5,7 @@ from flask_restful import Api
 from flask_jwt_extended import JWTManager
 from resources.user import UserRegister, UserLogin
 from resources.item import Item, ItemList
+from resources.store import Store, StoreList
 from db import db
 from models.item import ItemModel
 from models.user import UserModel
@@ -12,10 +13,6 @@ from models.user import UserModel
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 load_dotenv(os.path.join(basedir, '.env'))
-
-
-
-
 
 
 app = Flask(__name__)
@@ -31,10 +28,17 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' \
 db.init_app(app)
 
 
+@app.before_first_request
+def create_tables():
+    db.create_all()
+
+
 api.add_resource(Item, '/item/<string:name>')
 api.add_resource(ItemList, '/items')
 api.add_resource(UserRegister, '/register')
 api.add_resource(UserLogin, '/login')
+api.add_resource(Store, '/store/<string:name>')
+api.add_resource(StoreList, '/stores')
 
 
 @app.shell_context_processor
