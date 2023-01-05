@@ -16,5 +16,5 @@ Create and display a list of stores. Add, display, update and delete each store'
 - Clone the repository and navigate into the project folder  
 `git clone git@github.com:juuliadidenko/stores-restful-api.git`  
 `cd stores-restful-api`  
-- Run `docker compose --build -d`
+- Run `docker compose up --build -d`
 - Use Postman or run cURL queries in the terminal
