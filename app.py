@@ -1,14 +1,9 @@
 import os
 from dotenv import load_dotenv
 from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
 from flask_restful import Api
 from flask_jwt_extended import JWTManager
-from resources.user import UserRegister, UserLogin
-from resources.item import Item, ItemList
-from resources.store import Store, StoreList
-from db import db
-from models.item import ItemModel
-from models.user import UserModel
 
 
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -23,10 +18,14 @@ jwt = JWTManager(app)
 
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' \
-    + os.path.join(basedir, 'data.db')
-db.init_app(app)
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
+db = SQLAlchemy(app)
 
+from resources.user import UserRegister, UserLogin
+from resources.item import Item, ItemList
+from resources.store import Store, StoreList
+from models.item import ItemModel
+from models.user import UserModel
 
 @app.before_first_request
 def create_tables():
